@@ -1,0 +1,105 @@
+U
+
+    ‘)c7?  ã                   @   sŠ   d dl Z d dlZd dlZd dlmZ d dlZd dlZd dlm	Z	 d dl
+Z
+d dlmZmZ d dl
+Z
+d dlmZ d dlmZ G dd„ dƒZdS )	é    N)Ú
+BeautifulSoup)Úsearch)ÚdateÚdatetime)Úparse)Úurlparsec                   @   s  e Zd Zg Zdd„ Zdd„ Zdd„ Zdd„ Zd	d
+„ Zdd„ Z	d
+d„ Z
+dd„ Zdd„ Zdd„ Z
+dd„ Zdd„ Zdd„ Zdd„ Zdd„ Zdd „ Zd!d"„ Zd#d$„ Zd%d&„ Zd'd(„ Zd)d*„ Zd+d,„ Zd-d.„ Zd/d0„ Zd1d2„ Zd3d4„ Zd5d6„ Zd7d8„ Zd9d:„ Z d;d<„ Z!d=d>„ Z"d?d@„ Z#dAS )BÚFeatureExtractionc                 C   s€  g | _ || _d| _d| _d| _d| _d| _zt |¡| _t	tj
+dƒ| _W n   Y nX zt|ƒ| _| jj| _W n   Y nX zt | j¡| _W n   Y nX | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|  ¡ ¡ | j  
+|   ¡ ¡ | j  
+|  !¡ ¡ | j  
+|  "¡ ¡ | j  
+|  #¡ ¡ | j  
+|  $¡ ¡ | j  
+|  %¡ ¡ | j  
+|  &¡ ¡ | j  
+|  '¡ ¡ | j  
+|  (¡ ¡ | j  
+|  )¡ ¡ | j  
+|  *¡ ¡ | j  
+|  +¡ ¡ d S )NÚ zhtml.parser),ÚfeaturesÚurlÚdomainÚwhois_responser   ÚresponseÚsoupÚrequestsÚgetr   ÚtextÚnetlocÚwhoisÚappendÚUsingIpÚlongUrlÚshortUrlÚsymbolÚredirectingÚprefixSuffixÚ
+SubDomainsÚHpptsÚDomainRegLenÚFaviconÚ
+NonStdPortÚHTTPSDomainURLÚ
+RequestURLÚ	AnchorURLÚLinksInScriptTagsÚServerFormHandlerÚ	InfoEmailÚAbnormalURLÚWebsiteForwardingÚ
+StatusBarCustÚDisableRightClickÚUsingPopupWindowÚIframeRedirectionÚAgeofDomainÚDNSRecordingÚWebsiteTrafficÚPageRankÚGoogleIndexÚLinksPointingToPageÚStatsReport)Úselfr   © r5   úEC:\Users\Admin\Machine Learning\PJ5 Phishing URL Detection\feature.pyÚ__init__   sf    
+zFeatureExtraction.__init__c                 C   s&   zt  | j¡ W dS    Y dS X d S )Néÿÿÿÿé   )Ú	ipaddressÚ
+ip_addressr   ©r4   r5   r5   r6   r   Q   s
+    zFeatureExtraction.UsingIpc                 C   s6   t | jƒdk rdS t | jƒdkr2t | jƒdkr2dS dS )Né6   r9   éK   r   r8   )Úlenr   r<   r5   r5   r6   r   Y   s
+    zFeatureExtraction.longUrlc                 C   s   t  d| j¡}|rdS dS )Na  bit\.ly|goo\.gl|shorte\.st|go2l\.ink|x\.co|ow\.ly|t\.co|tinyurl|tr\.im|is\.gd|cli\.gs|yfrog\.com|migre\.me|ff\.im|tiny\.cc|url4\.eu|twit\.ac|su\.pr|twurl\.nl|snipurl\.com|short\.to|BudURL\.com|ping\.fm|post\.ly|Just\.as|bkite\.com|snipr\.com|fic\.kr|loopt\.us|doiop\.com|short\.ie|kl\.am|wp\.me|rubyurl\.com|om\.ly|to\.ly|bit\.do|t\.co|lnkd\.in|db\.tt|qr\.ae|adf\.ly|goo\.gl|bitly\.com|cur\.lv|tinyurl\.com|ow\.ly|bit\.ly|ity\.im|q\.gs|is\.gd|po\.st|bc\.vc|twitthis\.com|u\.to|j\.mp|buzurl\.com|cutt\.us|u\.bb|yourls\.org|x\.co|prettylinkpro\.com|scrnch\.me|filoops\.info|vzturl\.com|qr\.net|1url\.com|tweez\.me|v\.gd|tr\.im|link\.zip\.netr8   r9   )Úrer   r   ©r4   Úmatchr5   r5   r6   r   a   s    úzFeatureExtraction.shortUrlc                 C   s   t  d| j¡rdS dS )Nú@r8   r9   )r@   Úfindallr   r<   r5   r5   r6   r   n   s    zFeatureExtraction.symbolc                 C   s   | j  d¡dkrdS dS )Nz//é   r8   r9   )r   Úrfindr<   r5   r5   r6   r   t   s    zFeatureExtraction.redirectingc                 C   s2   zt  d| j¡}|rW dS W dS    Y dS X d S )Nz\-r8   r9   )r@   rD   r   rA   r5   r5   r6   r   z   s    zFeatureExtraction.prefixSuffixc                 C   s.   t t d| j¡ƒ}|dkrdS |dkr*dS dS )Nú\.r9   é   r   r8   )r?   r@   rD   r   )r4   Ú	dot_countr5   r5   r6   r   „   s    zFeatureExtraction.SubDomainsc                 C   s0   z| j j}d|krW dS W dS    Y dS X d S )NÚhttpsr9   r8   )r   Úscheme)r4   rJ   r5   r5   r6   r      s    zFeatureExtraction.Hpptsc                 C   s˜   z„| j j}| j j}zt|ƒr$|d }W n   Y nX zt|ƒrF|d }W n   Y nX |j|j d |j|j  }|dkr€W dS W dS    Y dS X d S )Nr   é   r9   r8   )r
+   Úexpiration_dateÚ
+creation_dater?   ÚyearÚmonth)r4   rM   rN   Úager5   r5   r6   r   —   s&    zFeatureExtraction.DomainRegLenc                 C   s”   z€| j  d¡D ]l}| j jdddD ]V|_dd„ t d|jd ¡D ƒ}| j|jd ksnt|ƒd	ksnt|jd kr"  W d	S q"qW d
+S    Y d
+S X d S )NÚheadÚlinkT©Úhrefc                 S   s   g | ]}|  d ¡‘qS ©r   ©Ústart©Ú.0Úxr5   r5   r6   Ú
+<listcomp>²   s     z-FeatureExtraction.Favicon.<locals>.<listcomp>rG   rU   r9   r8   )r   Úfind_allrS   r@   Úfinditerr   r?   r   )r4   rR   Údotsr5   r5   r6   r   ®   s    *zFeatureExtraction.Faviconc                 C   s8   z$| j  d¡}t|ƒdkr W dS W dS    Y dS X d S )Nú:r9   r8   )r   Úsplitr?   )r4   Úportr5   r5   r6   r    º   s    zFeatureExtraction.NonStdPortc                 C   s*   zd| j krW dS W dS    Y dS X d S )NrJ   r8   r9   )r   r<   r5   r5   r6   r!   Ä   s    
+z FeatureExtraction.HTTPSDomainURLc           	      C   s$  z| j jdddD ]V}dd„ t d|d ¡D ƒ}| j|d ksZ| j|d ksZt|ƒdkrb|d }|d }q| j jd	ddD ]V}d
+d„ t d|d ¡D ƒ}| j|d ksÂ| j|d ksÂt|ƒdkrÊ|d }|d }q|| j jdddD ]\}dd„ t d|d ¡D ƒ}| j|d ks0| j|d ks0t|ƒdkr8|d }|d }qä| j jd
+ddD ]^}dd„ t d|d ¡D ƒ}| j|d ksž| j|d ksžt|ƒdkr¦|d }|d }qRzJ|t|ƒ d }|dk rÖW W dS |dkrò|dk ròW W dS W W dS W n   Y W dS X W n   Y dS X d S )NÚimgT©Úsrcc                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\   Ð   s     z0FeatureExtraction.RequestURL.<locals>.<listcomp>rG   re   r9   Úaudioc                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\   Ö   s     Úembedc                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\   Ü   s     Úiframec                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\   â   s     éd   g      6@g     €N@r   r8   ©r   r]   r@   r^   r   r   r?   Úfloat)	r4   rc   r_   ÚsuccessÚirf   rg   rh   Ú
+percentager5   r5   r6   r"   Í   s@    (
+(
+.
+.
+zFeatureExtraction.RequestURLc                 C   sâ   zÎd\}}| j jdddD ]Z}d|d ksdd|d  ¡ ksdd|d  ¡ ksdt|d ksl| j|d ksl|d	 }|d	 }qzD|t|ƒ d
+ }|dk r˜W W d	S |dkr°|dk r°W W d
+S W W dS W n   Y W dS X W n   Y dS X d S )N©r   r   ÚaTrT   ú#rU   Z
+javascriptÚmailtor9   ri   g      ?@g     ÀP@r   r8   )r   r]   Úlowerr   r   rk   )r4   rm   Úunsaferp   rn   r5   r5   r6   r#   õ   s"    F
+zFeatureExtraction.AnchorURLc                 C   sN  z8d\}}| j jdddD ]V}dd„ t d|d ¡D ƒ}| j|d ksb| j|d ksbt|ƒd	krj|d	 }|d	 }q| j jd
+ddD ]V}dd„ t d|d
+ ¡D ƒ}| j|d
+ ksÊ| j|d
+ ksÊt|ƒd	krÒ|d	 }|d	 }q„zJ|t|ƒ d }|dk r W W d	S |dkr|dk rW W dS W W dS W n   Y W dS X W n   Y dS X d S )Nro   rS   TrT   c                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\     s     z7FeatureExtraction.LinksInScriptTags.<locals>.<listcomp>rG   rU   r9   Úscriptrd   c                 S   s   g | ]}|  d ¡‘qS rV   rW   rY   r5   r5   r6   r\     s     re   ri   g      1@g     @T@r   r8   rj   )r4   rm   rl   rS   r_   ru   rn   r5   r5   r6   r$     s.    (
+(
+
+z#FeatureExtraction.LinksInScriptTagsc                 C   s˜   z„t | jjdddƒdkr W dS | jjdddD ]P}|d dksL|d dkrT W d	S | j|d krx| j|d krx W dS  W dS q0W n   Y d	S X d S )
+NÚformT)Úactionr   r9   rw   r	   zabout:blankr8   )r?   r   r]   r   r   )r4   rv   r5   r5   r6   r%   *  s    z#FeatureExtraction.ServerFormHandlerc                 C   s2   zt  d| j¡rW dS W dS W n   Y dS X d S )Nz[mail\(\)|mailto:?]r8   r9   )r@   rD   Zsoapr<   r5   r5   r6   r&   :  s    
+zFeatureExtraction.InfoEmailc                 C   s2   z| j j| jkrW dS W dS W n   Y dS X d S )Nr9   r8   )r   r   r
+   r<   r5   r5   r6   r'   D  s    
+zFeatureExtraction.AbnormalURLc                 C   sJ   z6t | jjƒdkrW dS t | jjƒdkr.W dS W dS W n   Y dS X d S )Nr9   é   r   r8   )r?   r   Úhistoryr<   r5   r5   r6   r(   N  s    
+z#FeatureExtraction.WebsiteForwardingc                 C   s4   z t  d| jj¡rW dS W dS W n   Y dS X d S )Nz <script>.+onmouseover.+</script>r9   r8   ©r@   rD   r   r   r<   r5   r5   r6   r)   Z  s    
+zFeatureExtraction.StatusBarCustc                 C   s4   z t  d| jj¡rW dS W dS W n   Y dS X d S )Nzevent.button ?== ?2r9   r8   rz   r<   r5   r5   r6   r*   d  s    
+z#FeatureExtraction.DisableRightClickc                 C   s4   z t  d| jj¡rW dS W dS W n   Y dS X d S )Nzalert\(r9   r8   rz   r<   r5   r5   r6   r+   n  s    
+z"FeatureExtraction.UsingPopupWindowc                 C   s4   z t  d| jj¡rW dS W dS W n   Y dS X d S )Nz[<iframe>|<frameBorder>]r9   r8   rz   r<   r5   r5   r6   r,   x  s    
+z#FeatureExtraction.IframeRedirectionc                 C   sv   zb| j j}zt|ƒr|d }W n   Y nX t ¡ }|j|j d |j|j  }|dkr^W dS W dS    Y dS X d S ©Nr   rL   rE   r9   r8   ©r
+   rN   r?   r   ÚtodayrO   rP   ©r4   rN   r}   rQ   r5   r5   r6   r-   ‚  s    zFeatureExtraction.AgeofDomainc                 C   sv   zb| j j}zt|ƒr|d }W n   Y nX t ¡ }|j|j d |j|j  }|dkr^W dS W dS    Y dS X d S r{   r|   r~   r5   r5   r6   r.   ”  s    zFeatureExtraction.DNSRecordingc                 C   sP   z<t tj dt ¡ ¡ dƒ d¡d }t|ƒdk r8W dS W dS    Y dS X d S )	Nz,http://data.alexa.com/data?cli=10&dat=s&url=ÚxmlZREACHZRANKé † r9   r   r8   )r   ÚurllibÚrequestÚurlopenr   ÚreadÚfindÚint)r4   Úrankr5   r5   r6   r/   ¦  s    $z FeatureExtraction.WebsiteTrafficc                 C   sX   zDt  dd| ji¡}tt dtj¡d ƒ}|dkr@|dk r@W dS W dS    Y dS X d S )Nz'https://www.checkpagerank.net/index.phpÚnamezGlobal Rank: ([0-9]+)r   r€   r9   r8   )r   Úpostr   r†   r@   rD   Zrank_checker_responser   )r4   Zprank_checker_responseZglobal_rankr5   r5   r6   r0   °  s    zFeatureExtraction.PageRankc                 C   s4   z t | jdƒ}|rW dS W dS W n   Y dS X d S )Né   r9   r8   )r   r   )r4   Zsiter5   r5   r6   r1   ½  s    
+zFeatureExtraction.GoogleIndexc                 C   sN   z:t t d| jj¡ƒ}|dkr$W dS |dkr2W dS W dS W n   Y dS X d S )Nz<a href=r   r9   rH   r8   )r?   r@   rD   r   r   )r4   Znumber_of_linksr5   r5   r6   r2   È  s    
+z%FeatureExtraction.LinksPointingToPagec                 C   sR   z>t  dt¡}t | j¡}t  d|¡}|r0W dS |r:W dS W dS    Y dS X d S )Nzeat\.ua|usa\.cc|baltazarpresentes\.com\.br|pe\.hu|esy\.es|hol\.es|sweddy\.com|myjino\.ru|96\.lt|ow\.lya  146\.112\.61\.108|213\.174\.157\.151|121\.50\.168\.88|192\.185\.217\.116|78\.46\.211\.158|181\.174\.165\.13|46\.242\.145\.103|121\.50\.168\.40|83\.125\.22\.219|46\.242\.145\.98|107\.151\.148\.44|107\.151\.148\.107|64\.70\.19\.203|199\.184\.144\.27|107\.151\.148\.108|107\.151\.148\.109|119\.28\.52\.61|54\.83\.43\.69|52\.69\.166\.231|216\.58\.192\.225|118\.184\.25\.86|67\.208\.74\.71|23\.253\.126\.58|104\.239\.157\.210|175\.126\.123\.219|141\.8\.224\.221|10\.10\.10\.10|43\.229\.108\.32|103\.232\.215\.140|69\.172\.201\.153|216\.218\.185\.162|54\.225\.104\.146|103\.243\.24\.98|199\.59\.243\.120|31\.170\.160\.61|213\.19\.128\.77|62\.113\.226\.131|208\.100\.26\.234|195\.16\.127\.102|195\.16\.127\.157|34\.196\.13\.28|103\.224\.212\.222|172\.217\.4\.225|54\.72\.9\.51|192\.64\.147\.141|198\.200\.56\.183|23\.253\.164\.103|52\.48\.191\.26|52\.214\.197\.72|87\.98\.255\.18|209\.99\.17\.27|216\.38\.62\.18|104\.130\.124\.96|47\.89\.58\.141|78\.46\.211\.158|54\.86\.225\.156|54\.82\.156\.19|37\.157\.192\.102|204\.11\.56\.48|110\.34\.231\.42r8   r9   )r@   r   r   ÚsocketÚ
+gethostbynamer   )r4   Z	url_matchr;   Zip_matchr5   r5   r6   r3   Õ  s      ÿûzFeatureExtraction.StatsReportc                 C   s   | j S )N)r
+   r<   r5   r5   r6   ÚgetFeaturesListè  s    z!FeatureExtraction.getFeaturesListN)$Ú__name__Ú
+__module__Ú__qualname__r
+   r7   r   r   r   r   r   r   r   r   r   r   r    r!   r"   r#   r$   r%   r&   r'   r(   r)   r*   r+   r,   r-   r.   r/   r0   r1   r2   r3   r   r5   r5   r5   r6   r      sB   A
+
+	
+
+	(
+
+
+
+
+
+
+
+
+r   )r:   r@   Úurllib.requestr   Úbs4r   r‹   r   Zgooglesearchr   r   r   r   ÚtimeÚdateutil.parserr   Z
+date_parseÚurllib.parser   r   r5   r5   r5   r6   Ú<module>   s   
